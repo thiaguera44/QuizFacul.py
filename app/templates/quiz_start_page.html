@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Tema - Seu Aplicativo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz_start_page.css') }}">
+    <style>
+        /* Coloque aqui o CSS fornecido anteriormente */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha um Tema</h1>
+        
+        <!-- Primeiro cartão -->
+        <div class="card">
+            <div class="card-header">
+                <img src="{{ url_for('static', filename='images/pense2.png') }}" class="card-img" alt="Tema 1">
+                <h5 class="card-title">Tema 1</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Descrição do Tema 1.</p>
+                <button class="card-button" onclick="startQuiz(1)">Selecionar</button> <!-- Passe o quiz_id aqui -->
+            </div>
+        </div>
+        
+        <!-- Segundo cartão -->
+        <div class="card">
+            <div class="card-header">
+                <img src="{{ url_for('static', filename='images/pense2.png') }}" class="card-img" alt="Tema 2">
+                <h5 class="card-title">Tema 2</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Descrição do Tema 2.</p>
+                <button class="card-button" onclick="startQuiz(2)">Selecionar</button> <!-- Passe o quiz_id aqui -->
+            </div>
+        </div>
+
+        <!-- Terceiro cartão -->
+        <div class="card">
+            <div class="card-header">
+                <img src="{{ url_for('static', filename='images/pense2.png') }}" class="card-img" alt="Tema 3">
+                <h5 class="card-title">Tema 3</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Descrição do Tema 3.</p>
+                <button class="card-button" onclick="startQuiz(3)">Selecionar</button> <!-- Passe o quiz_id aqui -->
+            </div>
+        </div>
+
+        <!-- Quarto cartão -->
+        <div class="card">
+            <div class="card-header">
+                <img src="{{ url_for('static', filename='images/pense2.png') }}" class="card-img" alt="Tema 4">
+                <h5 class="card-title">Tema 4</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Descrição do Tema 4.</p>
+                <button class="card-button" onclick="startQuiz(4)">Selecionar</button> <!-- Passe o quiz_id aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startQuiz(quizId) {
+            // Redirecionar para a página de quiz com o quiz_id selecionado
+            window.location.href = "{{ url_for('start_quiz', quiz_id=0) }}".replace('0', quizId);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes Disponíveis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quizzes.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Quizzes Disponíveis</h1>
+        <ul>
+            {% for quiz in quizzes %}
+                <li>
+                    <h2>{{ quiz[1] }}</h2>
+                    <p>{{ quiz[2] }}</p>
+                    <a href="{{ url_for('start_quiz', quiz_id=quiz[0]) }}" class="start-button">Iniciar Quiz</a>
+                    <form action="{{ url_for('delete_quiz', quiz_id=quiz[0]) }}" method="POST" class="delete-form">
+                        <button type="submit" class="delete-button">Deletar</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

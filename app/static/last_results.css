@@ -1,0 +1,54 @@
+body {
+    background-color: #1e1e1e; /* Cor de fundo escura */
+    color: #ffffff; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Usar flexbox para centralizar verticalmente */
+    justify-content: center; /* Centralizar horizontalmente */
+    align-items: center; /* Centralizar verticalmente */
+    height: 100vh; /* Altura total da viewport */
+}
+
+.container {
+    width: 90%; /* Largura ajustada para dispositivos móveis */
+    max-width: 800px; /* Largura máxima */
+    padding: 40px;
+    background-color: #333; /* Cor de fundo do contêiner */
+    border-radius: 15px; /* Cantos arredondados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+h1 {
+    color: #ffa500; /* Cor laranja para o título */
+    text-align: center; /* Centralizar o título */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    font-size: 32px; /* Tamanho da fonte */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Colapsar as bordas da tabela */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+table th, table td {
+    padding: 15px; /* Espaçamento interno */
+    border-bottom: 1px solid #555; /* Linha de separação entre as células */
+    text-align: center; /* Alinhar texto ao centro */
+}
+
+table th {
+    background-color: #555; /* Cor de fundo do cabeçalho */
+    color: #ffa500; /* Cor laranja para o texto do cabeçalho */
+}
+
+table tr:nth-child(even) {
+    background-color: #444; /* Cor de fundo para linhas pares */
+}
+
+table td:nth-child(1), table td:nth-child(2) {
+    font-weight: bold; /* Texto em negrito */
+    color: #ffa500; /* Cor laranja para data e pontuação */
+}

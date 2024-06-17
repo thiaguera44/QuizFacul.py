@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='start_quiz.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ quiz_titulo }}</h1> <!-- Título do quiz -->
+        <form id="quiz-form" method="POST" action="{{ url_for('submit_quiz', quiz_id=quiz_id) }}">
+            <!-- Loop através das perguntas e respostas -->
+            {% for pergunta, respostas in quiz_perguntas %}
+                <div class="pergunta">
+                    <h2>{{ pergunta[1] }}</h2>
+                    <ul>
+                        {% for resposta in respostas %}
+                            <li>
+                                <label>
+                                    <input type="radio" name="{{ pergunta[0] }}" value="{{ resposta[0] }}" required>
+                                    {{ resposta[1] }}
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+            <!-- Adicionar o campo CSRF token -->
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit">Enviar Respostas</button>
+        </form>
+        <div id="respostas-container"></div> <!-- Espaço reservado para as respostas corretas/incorretas -->
+    </div>
+
+    <!-- JavaScript para lidar com o envio do formulário via AJAX -->
+    <script>
+        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            const formData = new FormData(event.target);
+            const respostas = {};
+
+            formData.forEach((value, key) => {
+                respostas[key] = value;
+            });
+
+            // Enviar o token CSRF no cabeçalho da requisição
+            const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+            fetch(`{{ url_for('submit_quiz', quiz_id=quiz_id) }}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify(respostas)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const respostasContainer = document.getElementById('respostas-container');
+                respostasContainer.innerHTML = ''; // Limpa o conteúdo existente
+
+                data.resultados.forEach(resultado => {
+                    const p = document.createElement('p');
+                    if (resultado.correta) {
+                        p.className = 'correct-answer';
+                        p.textContent = `Pergunta: ${resultado.pergunta} - Correta!`;
+                    } else {
+                        p.className = 'incorrect-answer';
+                        p.textContent = `Pergunta: ${resultado.pergunta} - Incorreta.`;
+                    }
+                    respostasContainer.appendChild(p);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao enviar respostas:', error);
+            });
+        });
+    </script>
+</body>
+</html>

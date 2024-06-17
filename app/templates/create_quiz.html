@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='create_quiz.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Criar Novo Quiz</h1>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form id="quizForm" method="post">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+            
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea>
+            
+            <h3>Perguntas:</h3>
+            <div id="perguntas">
+                <div class="pergunta">
+                    <label for="pergunta_1">Pergunta 1:</label>
+                    <input type="text" id="pergunta_1" name="perguntas[]" required oninput="atualizarPreview()">
+                    <div id="respostas_1">
+                        <label for="resposta_1_1">Resposta 1:</label>
+                        <input type="text" id="resposta_1_1" name="respostas_1[]" required oninput="atualizarPreview()">
+                        <label for="correta_1_1">Correta?</label>
+                        <input type="checkbox" id="correta_1_1" name="corretas_1[]" value="1" onchange="atualizarPreview()">
+                    </div>
+                    <button type="button" onclick="adicionarResposta(1)">Adicionar Resposta</button>
+                </div>
+            </div>
+            
+            <button type="button" onclick="adicionarPergunta()">Adicionar Pergunta</button>
+            <button type="submit">Criar Quiz</button>
+        </form>
+
+        <!-- Botões de navegação -->
+        <div class="nav-buttons">
+            <button onclick="window.location.href='{{ url_for('home') }}'" class="nav-button">Voltar para a Home</button>
+            <button onclick="window.location.href='{{ url_for('quizzes') }}'" class="nav-button">Ver Quizzes Prontos</button>
+        </div>
+        
+        <h3>Pré-visualização do Quiz:</h3>
+        <div id="preview"></div>
+    </div>
+
+    <script>
+        let perguntaCount = 1;
+
+        function adicionarPergunta() {
+            perguntaCount++;
+            const perguntasDiv = document.getElementById('perguntas');
+            const novaPergunta = document.createElement('div');
+            novaPergunta.className = 'pergunta';
+        
+            novaPergunta.innerHTML = `
+                <label for="pergunta_${perguntaCount}">Pergunta ${perguntaCount}:</label>
+                <input type="text" id="pergunta_${perguntaCount}" name="perguntas[]" required oninput="atualizarPreview()">
+                <div id="respostas_${perguntaCount}">
+                    <label for="resposta_${perguntaCount}_1">Resposta 1:</label>
+                    <input type="text" id="resposta_${perguntaCount}_1" name="respostas_${perguntaCount}[]" required oninput="atualizarPreview()">
+                    <label for="correta_${perguntaCount}_1">Correta?</label>
+                    <input type="checkbox" id="correta_${perguntaCount}_1" name="corretas_${perguntaCount}[]" value="1" onchange="atualizarPreview()">
+                </div>
+                <button type="button" onclick="adicionarResposta(${perguntaCount})">Adicionar Resposta</button>
+                <button type="button" onclick="moverPergunta(this, 'up')">↑</button>
+                <button type="button" onclick="moverPergunta(this, 'down')">↓</button>
+            `;
+        
+            perguntasDiv.appendChild(novaPergunta);
+        
+            // Adiciona classe para feedback visual e remove após 1 segundo
+            novaPergunta.classList.add('added');
+            setTimeout(() => {
+                novaPergunta.classList.remove('added');
+            }, 1000);
+        
+            atualizarPreview();
+        }
+        
+        function adicionarResposta(perguntaIndex) {
+            const respostasDiv = document.getElementById(`respostas_${perguntaIndex}`);
+            const respostaCount = respostasDiv.querySelectorAll('input[type="text"]').length + 1; // Começar a partir de 2
+        
+            const novaResposta = document.createElement('div');
+            novaResposta.innerHTML = `
+                <label for="resposta_${perguntaIndex}_${respostaCount}">Resposta ${respostaCount}:</label>
+                <input type="text" id="resposta_${perguntaIndex}_${respostaCount}" name="respostas_${perguntaIndex}[]" required oninput="atualizarPreview()">
+                <label for="correta_${perguntaIndex}_${respostaCount}">Correta?</label>
+                <input type="checkbox" id="correta_${perguntaIndex}_${respostaCount}" name="corretas_${perguntaIndex}[]" value="1" onchange="atualizarPreview()">
+            `;
+            respostasDiv.appendChild(novaResposta);
+        
+            atualizarPreview();
+        }
+        
+        function moverPergunta(button, direction) {
+            const pergunta = button.parentElement;
+            if (direction === 'up' && pergunta.previousElementSibling) {
+                pergunta.parentElement.insertBefore(pergunta, pergunta.previousElementSibling);
+            } else if (direction === 'down' && pergunta.nextElementSibling) {
+                pergunta.parentElement.insertBefore(pergunta.nextElementSibling, pergunta);
+            }
+        
+            atualizarPreview();
+        }
+        
+        function atualizarPreview() {
+            const previewDiv = document.getElementById('preview');
+            const perguntas = document.querySelectorAll('.pergunta');
+            let html = '';
+        
+            perguntas.forEach((perguntaDiv, index) => {
+                const pergunta = perguntaDiv.querySelector(`input[name="perguntas[]"]`).value;
+                const respostas = perguntaDiv.querySelectorAll(`input[name^="respostas_"]`);
+                const corretas = perguntaDiv.querySelectorAll(`input[name^="corretas_"]`);
+                html += `<h4>${index + 1}. ${pergunta}</h4><ul>`;
+                respostas.forEach((resposta, i) => {
+                    const correta = corretas[i].checked ? ' (Correta)' : '';
+                    html += `<li>${resposta.value}${correta}</li>`;
+                });
+                html += `</ul>`;
+            });
+        
+            previewDiv.innerHTML = html;
+        }
+        
+        document.getElementById('quizForm').addEventListener('input', atualizarPreview);        
+    </script>
+</body>
+</html>

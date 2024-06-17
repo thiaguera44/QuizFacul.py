@@ -1,0 +1,103 @@
+/* Define o estilo para o corpo da página */
+body {
+    background-color: #1e1e1e; /* Cor de fundo escura */
+    color: #ffffff; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estiliza o contêiner principal da página */
+.container {
+    width: 90%; /* Largura ajustada para dispositivos móveis */
+    max-width: 800px; /* Largura máxima */
+    margin: 50px auto; /* Centralizar o contêiner */
+    padding: 40px;
+    background-color: #333; /* Cor de fundo do contêiner */
+    border-radius: 15px; /* Cantos arredondados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+/* Estiliza os títulos h1 */
+h1 {
+    color: #ffa500; /* Cor laranja para o título */
+    text-align: center; /* Centralizar o título */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    font-size: 32px; /* Tamanho da fonte */
+}
+
+/* Estiliza os itens da lista de quizzes */
+ul {
+    list-style-type: none; /* Remover marcadores de lista */
+    padding: 0;
+}
+
+/* Estiliza cada item da lista de quizzes */
+ul li {
+    background-color: #444; /* Cor de fundo dos itens da lista */
+    margin-bottom: 10px; /* Espaçamento inferior entre os itens */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 10px; /* Cantos arredondados dos itens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: flex; /* Usar flexbox para alinhar itens */
+    justify-content: space-between; /* Espaçar itens igualmente */
+    align-items: center; /* Alinhar itens verticalmente ao centro */
+}
+
+/* Estiliza os títulos dos quizzes */
+ul li h2 {
+    color: #ffa500; /* Cor laranja para os títulos dos quizzes */
+    margin-bottom: 5px; /* Espaçamento inferior */
+    font-size: 20px; /* Tamanho da fonte */
+}
+
+/* Estiliza as descrições dos quizzes */
+ul li p {
+    color: #ccc; /* Cor cinza claro para a descrição */
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+/* Estiliza os botões de iniciar e deletar quiz */
+ul li a.start-button,
+ul li form.delete-form button.delete-button {
+    display: inline-block;
+    color: #ffa500;
+    background-color: #333;
+    border: 2px solid #ffa500;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: 10px; /* Espaçamento entre os botões */
+}
+
+/* Estiliza os botões ao passar o mouse */
+ul li a.start-button:hover,
+ul li form.delete-form button.delete-button:hover {
+    background-color: #ffa500;
+    color: #333;
+}
+
+/* Estiliza o botão "Deletar" para diferenciar */
+ul li form.delete-form button.delete-button {
+    background-color: #d9534f; /* Cor vermelha para deletar */
+    border-color: #d9534f;
+}
+
+/* Estiliza o botão "Deletar" ao passar o mouse */
+ul li form.delete-form button.delete-button:hover {
+    background-color: #c9302c;
+    color: #fff;
+}
+
+/* Estiliza a imagem no topo do contêiner */
+.container .card-img {
+    display: block; /* Garante que a imagem seja exibida como bloco */
+    margin: 0 auto 20px; /* Centraliza horizontalmente e adiciona margem inferior */
+    width: 150px; /* Largura da imagem */
+    height: auto; /* Altura automática para manter a proporção */
+    border-radius: 50%; /* Transforma em um círculo */
+    border: 4px solid #ffa500; /* Borda sólida laranja */
+}

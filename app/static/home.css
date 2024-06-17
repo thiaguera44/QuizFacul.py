@@ -1,0 +1,206 @@
+/* Define o estilo para o corpo da página */
+body {
+    background-color: #1e1e1e; /* Cor de fundo escura */
+    color: #ffffff; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estiliza o contêiner principal da página */
+.container {
+    width: 90%; /* Largura ajustada para dispositivos móveis */
+    max-width: 800px; /* Largura máxima */
+    margin: 50px auto; /* Centralizar o contêiner */
+    padding: 40px;
+    background-color: #333; /* Cor de fundo do contêiner */
+    border-radius: 15px; /* Cantos arredondados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Sombra */
+    text-align: center; /* Centralizar conteúdo */
+}
+
+/* Estiliza os títulos h1 */
+h1 {
+    color: #ffa500; /* Cor laranja para o título */
+    text-align: center; /* Centralizar o título */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    font-size: 32px; /* Tamanho da fonte */
+}
+
+/* Estiliza os itens de menu na barra de navegação */
+nav ul {
+    list-style-type: none; /* Remover marcadores de lista */
+    padding: 0;
+    text-align: center; /* Centralizar os itens de menu */
+}
+
+/* Estiliza os itens da lista de navegação */
+nav ul li {
+    margin-bottom: 10px; /* Espaçamento inferior entre os itens */
+}
+
+/* Estiliza os links da lista de navegação */
+nav ul li a {
+    display: block;
+    color: #ffa500; /* Cor do texto dos botões */
+    text-decoration: none; /* Remover sublinhado */
+    padding: 10px 20px; /* Espaçamento interno dos botões */
+    border-radius: 5px; /* Cantos arredondados dos botões */
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+/* Estiliza os links da lista de navegação ao passar o mouse ou ao receber foco */
+nav ul li a:hover,
+nav ul li a:focus {
+    background-color: #777; /* Cor de fundo dos botões */
+}
+
+/* Efeito de redução de escala ao clicar no link */
+nav ul li a:active {
+    transform: scale(0.95);
+}
+
+/* Estiliza a seção de quizzes disponíveis */
+#available-quizzes {
+    margin-top: 30px; /* Espaçamento superior */
+    border-radius: 15px; /* Cantos arredondados */
+    overflow: hidden; /* Esconder conteúdo que ultrapassa os cantos arredondados */
+    display: none; /* Oculta a seção de quizzes disponíveis */
+}
+
+/* Estiliza o título da seção de quizzes disponíveis */
+#available-quizzes h2 {
+    color: #ffa500; /* Cor laranja para o título da seção */
+    text-align: center; /* Centralizar o título */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    font-size: 24px; /* Tamanho da fonte */
+}
+
+/* Estiliza os itens da lista de quizzes disponíveis */
+#available-quizzes ul {
+    list-style-type: none; /* Remover marcadores de lista */
+    padding: 0;
+}
+
+#available-quizzes ul li {
+    background-color: #444; /* Cor de fundo dos itens da lista */
+    margin-bottom: 10px; /* Espaçamento inferior entre os itens */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 10px; /* Cantos arredondados dos itens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estiliza os títulos dos quizzes */
+#available-quizzes ul li h3 {
+    color: #ffa500; /* Cor laranja para os títulos dos quizzes */
+    margin-bottom: 5px; /* Espaçamento inferior */
+    font-size: 20px; /* Tamanho da fonte */
+}
+
+/* Estiliza as descrições dos quizzes */
+#available-quizzes ul li p {
+    color: #ccc; /* Cor cinza claro para a descrição */
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+/* Estiliza os botões dentro da seção de quizzes disponíveis */
+#available-quizzes ul li button {
+    display: inline-block;
+    color: #ffa500;
+    background-color: #333;
+    border: 2px solid #ffa500;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estiliza os botões ao passar o mouse */
+#available-quizzes ul li button:hover {
+    background-color: #ffa500;
+    color: #333;
+}
+
+/* Estiliza a seção de "Últimos Resultados do Quiz" */
+#last-results {
+    margin-top: 30px; /* Espaçamento superior */
+    border-radius: 15px; /* Cantos arredondados */
+    overflow: hidden; /* Esconder conteúdo que ultrapassa os cantos arredondados */
+}
+
+/* Estiliza o título da seção de "Últimos Resultados do Quiz" */
+#last-results h2 {
+    color: #ffa500; /* Cor laranja para o título da seção */
+    text-align: center; /* Centralizar o título */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    font-size: 24px; /* Tamanho da fonte */
+}
+
+/* Estiliza as tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Colapsar as bordas da tabela */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estiliza as células de cabeçalho e de dados das tabelas */
+table th, table td {
+    padding: 15px; /* Espaçamento interno */
+    border-bottom: 1px solid #555; /* Linha de separação entre as células */
+    text-align: center; /* Alinhar texto ao centro */
+}
+
+/* Estiliza as células de cabeçalho das tabelas */
+table th {
+    background-color: #555; /* Cor de fundo do cabeçalho */
+    color: #ffa500; /* Cor laranja para o texto do cabeçalho */
+}
+
+/* Estilizar linhas alternadas nas tabelas */
+table tr:nth-child(even) {
+    background-color: #444; /* Cor de fundo para linhas pares */
+}
+
+/* Estiliza as células de data e pontuação das tabelas */
+table td:nth-child(1),
+table td:nth-child(2) {
+    font-weight: bold; /* Texto em negrito */
+    color: #ffa500; /* Cor laranja para data e pontuação */
+}
+
+/* Estiliza o botão "Iniciar um Novo Quiz" */
+.start-quiz {
+    text-align: center; /* Centralizar o botão */
+}
+
+/* Estiliza o botão dentro da classe ".start-quiz" */
+.start-quiz button {
+    display: inline-block;
+    color: #ffa500;
+    background-color: #333;
+    border: 2px solid #ffa500;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estiliza o botão "Iniciar um Novo Quiz" ao passar o mouse */
+.start-quiz button:hover {
+    background-color: #ffa500;
+    color: #333;
+}
+
+/* Estiliza a imagem no topo do contêiner */
+.container .card-img {
+    display: block; /* Garante que a imagem seja exibida como bloco */
+    margin: 0 auto 20px; /* Centraliza horizontalmente e adiciona margem inferior */
+    width: 150px; /* Largura da imagem */
+    height: auto; /* Altura automática para manter a proporção */
+    border-radius: 50%; /* Transforma em um círculo */
+    border: 4px solid #ffa500; /* Borda sólida laranja */
+}
