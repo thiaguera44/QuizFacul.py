@@ -1,3 +1,15 @@
+GRUPO - 05
+
+Bruno Henrique - 322129027
+Caio Vieira – 32222235	
+Felipe Gabriel – 32227639
+Sérgio de Souza – 32220410
+Thais Cristina – 322210135
+Thiago Rocha – 32222617
+
+
+
+
 Projeto de Sistema de Quizzes
 Este projeto é um sistema de quizzes desenvolvido com Flask e SQLite. Ele permite que os usuários se registrem, façam login, criem quizzes, respondam quizzes e vejam seus resultados.
 
